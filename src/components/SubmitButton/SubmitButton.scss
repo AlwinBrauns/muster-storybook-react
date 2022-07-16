@@ -1,0 +1,58 @@
+@use 'src/variables' as vars;
+@use 'sass:color';
+
+.SubmitButton {
+  position: relative;
+  width: fit-content;
+  transition: width 2s;
+  * {
+    color: vars.$text-color;
+  }
+  input {
+    width: 100px;
+    transition: width 0.3s ease-in-out, border-radius 1s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  .check-icon {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.43) rotate(0deg);
+    transition: 0.75s ease-in-out;
+    transition-delay: 0.3s;
+  }
+  &.submitted {
+    .check-icon {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      >* {
+        color: whitesmoke;
+      }
+    }
+    input {
+      @keyframes pop {
+        0%{
+          transform: scale(1.0);
+        }
+        10%{
+          transform: scale(0.8);
+        }
+        50%{
+          transform: scale(1.2);
+        }
+        100%{
+          transform: scale(1.0);
+        }
+      }
+      font-size: 0;
+      height: 45px;
+      width: 45px;
+      animation: pop 0.7s ease-in-out;
+      animation-delay: 0.25s;
+      border-radius: 100%;
+      background-color: color.complement(vars.$primary-color);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use 'src/variables' as vars;
+@use 'sass:math';
+.LoginForm {
+    display: grid;
+    justify-items: center;
+}
+.clock-icon {
+    width: 50px;
+    .clock-line-minute,.clock-line-hour {
+        transform-box: fill-box;
+        transform-origin: bottom;
+        transition: 1s linear;
+    }
+    .clock-line-hour {
+        transform-origin: top;
+    }
+    &:hover {
+        .clock-line-minute {
+            transform: rotate(360deg);
+        }
+        .clock-line-hour {
+            transform: rotate(math.div(360deg,12));
+        }
+    }
+}
+

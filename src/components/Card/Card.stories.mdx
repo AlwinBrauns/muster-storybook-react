@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import Card from './Card.js'
+import {Basic, Accent, Center, Right} from './Card.stories.js'
+
+
+<Meta
+    title="Tutorials/Cards"
+    component={Card}
+    parameters={{
+        viewMode: 'docs',
+        previewTabs: {
+          canvas: { hidden: true },
+        },
+    }}/>
+
+export const Template = () => (
+    <div style={
+    {display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "10px", borderStyle: "solid", borderColor: "whitesmoke", padding: "20px"}
+    }>
+        <Basic {...Basic.args} />
+        <Accent {...Accent.args} />
+        <Center {...Center.args} />
+        <Right {...Right.args} />
+    </div>
+)
+
+# Cards
+
+Cards display content given as a children
+
+<Story
+        name="All"
+    >
+    {Template.bind({})}
+</Story>
+
+Change the title with the property title
+```javascript
+    <Card title="title" />
+```

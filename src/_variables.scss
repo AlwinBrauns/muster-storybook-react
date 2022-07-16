@@ -1,0 +1,8 @@
+@use 'sass:color';
+
+$primary-color: #61e5aa;
+$text-color: color.adjust(
+                color.complement($primary-color),
+        $blackness: 80%
+);
+$base-distance: 20px;

@@ -1,0 +1,52 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import SubmitButton from './SubmitButton.js'
+import {Raw, Wrapped} from './SubmitButton.stories.js'
+
+<Meta
+    title="Tutorials/SubmitButtons"
+    component={SubmitButton}
+    parameters={{
+        viewMode: 'docs',
+        previewTabs: {
+          canvas: { hidden: true },
+        },
+    }}/>
+
+export const Template = () => (
+    <div style={
+    {display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: "10px", borderStyle: "solid", borderColor: "whitesmoke", padding: "20px"}
+    }>
+        <Raw {...Raw.args}></Raw>
+        <Wrapped {...Wrapped.args}></Wrapped>
+    </div>
+)
+
+# SubmitButton
+
+A button for submitting forms
+
+<Story
+        name="All"
+    >
+    {Template.bind({})}
+</Story>
+
+<br></br>
+
+## How To Use
+
+Bind your SubmitButton to a useState Hook
+
+```javascript
+const [submitted, setSubmitted] = useState(false)
+const onSubmit = (e)=>{
+    e.preventDefault()
+    setSubmitted(true)
+}
+return (
+    <form onSubmit={event => onSubmit(event)}>
+        <SubmitButton submitted={submitted} {...args} />
+    </form>
+)
+```

@@ -1,0 +1,46 @@
+@use "src/variables" as vars;
+@use "sass:math";
+@use "sass:color";
+
+.Card {
+  display: grid;
+  //reset
+  >*, h3 {
+    margin: 0;
+    padding: 0;
+  }
+  * {
+    color: vars.$text-color
+  }
+  background-color: vars.$primary-color;
+  box-shadow: 0 5px 0 color.complement(vars.$primary-color);
+  transition: 0.2s ease-in-out;
+  border-radius: 20px;
+  padding: vars.$base-distance;
+  .header {
+    padding: math.div(vars.$base-distance, 2) 0 0 0;
+  }
+  .body {
+    padding: math.div(vars.$base-distance, 2) 0;
+  }
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 11px 0 color.complement(vars.$primary-color);
+  }
+  &.accent {
+    background-color: color.adjust(vars.$primary-color,
+    $hue: -90);
+  }
+  &.center {
+    justify-items: center;
+    >div {
+      text-align: center;
+    }
+  }
+  &.right {
+    justify-items: end;
+    >div {
+      text-align: right;
+    }
+  }
+}
